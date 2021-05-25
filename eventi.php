@@ -70,6 +70,7 @@ include "connessioneDB.php";
 
         </table>
         <br>
+        ciao bello
         <input type="submit" value="Prenota">
     </form>
 </body>

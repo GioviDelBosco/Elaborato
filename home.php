@@ -12,11 +12,12 @@ if (isset($_POST['esci'])) {
     session_destroy();
     header('Location: index.php');
 }
-
+//query per trovare il nome dell'utente che ha fatto il login
 $idUtente = $_SESSION['uname'];
 $queryLogin = $con->query("SELECT username from utenti WHERE id=$idUtente");
 $row = $queryLogin->fetch_array();
 ?>
+
 <html>
 
 <head>
@@ -54,6 +55,8 @@ $row = $queryLogin->fetch_array();
                 </tr>
 
                 <?php
+
+                //query che seleziona tutti i biglietti che un utente ha acquistato tramite l'id del biglietto,del evento e dell'utente
 
                 $querySelect = $con->query("SELECT B.id_biglietto,A.nome,B.prezzo,B.data
 from biglietto as B JOIN evento as E

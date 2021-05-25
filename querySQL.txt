@@ -1,0 +1,38 @@
+CREATE TABLE `utenti` (
+  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `username` varchar(80) NOT NULL,
+  `nome` varchar(80) NOT NULL,
+  `cognome` varchar(80) NOT NULL, 
+  `password` varchar(80) NOT NULL
+) ENGINE=InnoDB
+
+CREATE TABLE `artista` (
+  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `nome` varchar(80) NOT NULL,
+  `genere` varchar(80) NOT NULL
+) ENGINE=InnoDB
+
+CREATE TABLE `evento` (
+  `id` int(11)PRIMARY KEY AUTO_INCREMENT,
+  `cantante` int NOT NULL,
+  `genere` varchar(80) NOT NULL,
+  `data` date NOT NULL,
+  `prezzo` decimal(5,2) NOT NULL,
+  `luogo` varchar(100) NOT NULL,
+  FOREIGN KEY(cantante) REFERENCES artista(id)
+) ENGINE=InnoDB
+
+CREATE TABLE `biglietto` (
+  `id_biglietto` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `id_utente` int(11) NOT NULL,
+  `id_evento` int(11) NOT NULL,
+  `prezzo` decimal(5,2) NOT NULL,
+  `data` date NOT NULL,
+  FOREIGN KEY (id_utente) REFERENCES utenti(id),
+  FOREIGN KEY (id_evento) REFERENCES evento(id)
+) ENGINE=InnoDB
+
+//query per vedere gli eventi degli artisti
+
+SELECT A.nome,E.genere,E.data,E.prezzo,E.luogo
+from artista as A JOIN evento as E on A.id=E.cantante

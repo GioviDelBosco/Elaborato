@@ -59,9 +59,9 @@ $row = $queryLogin->fetch_array();
                 //query che seleziona tutti i biglietti che un utente ha acquistato tramite l'id del biglietto,del evento e dell'utente
 
                 $querySelect = $con->query("SELECT B.id_biglietto,A.nome,B.prezzo,B.data
-from biglietto as B JOIN evento as E
-on B.id_evento=E.id JOIN artista as A on A.id=E.cantante
-where B.id_utente=$idUtente");
+                from biglietto as B JOIN evento as E
+                on B.id_evento=E.id JOIN artista as A on A.id=E.cantante
+                where B.id_utente=$idUtente");
 
                 while ($row = $querySelect->fetch_assoc()) {
                     echo "<tr>";

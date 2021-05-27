@@ -1,13 +1,13 @@
 <?php
 
 include "connessioneDB.php";
+
 if (!isset($_SESSION['uname'])) {
   header('Location: login.php');
 } else {
-  if (isset($_POST)) {
     if (isset($_POST["concerto"])) {
-      $valueToInsert = $_POST["concerto"];
-      $idUtente=$_SESSION['uname'];
+      $valueToInsert = $_POST["concerto"]; //id del concerto
+      $idUtente=$_SESSION['uname']; //id dell'utente
       $querySelect=$con->query("SELECT * FROM evento WHERE id=".$valueToInsert."");
 
       $row = $querySelect->fetch_assoc();
@@ -23,5 +23,4 @@ if (!isset($_SESSION['uname'])) {
     echo "Non hai selezionato nessun evento";
     header("refresh:1;url=eventi.php");
     }
-  }
 }

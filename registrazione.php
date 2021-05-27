@@ -17,7 +17,6 @@ if (isset($_POST['registrati'])) {
     if (!$result) {
         echo "errore nella query:" . $con->error . "</br>";
       } else {
-        $_SESSION["uname"] = session_id();
         echo "registrazione eseguita con successo";
         header( "refresh:1;url=login.php" );
     }    

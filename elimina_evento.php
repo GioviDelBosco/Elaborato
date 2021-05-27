@@ -9,12 +9,8 @@ if (isset($_POST['cancella'])) {
   $result = $con->query("SELECT id_biglietto
   from biglietto
   where id_utente=$idUtente");
-
-
   $row = $result->fetch_assoc();
   $bi = $row['id_biglietto'];
-
-  //DELETE FROM table_name WHERE condition;
   $queryElimina = $con->query("DELETE FROM biglietto WHERE id_biglietto=$bi");
 
   echo "Eliminazione effettuata con successo!";
